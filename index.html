@@ -1,28 +1,150 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My First Website</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crypto Airdrops Hub</title>
   <style>
     body {
-      font-family: sans-serif;
-      background: #f5f5f5;
-      padding: 20px;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #0d0d0d;
+      color: #fff;
+    }
+    header {
+      padding: 1rem;
       text-align: center;
+      background: #111;
+      font-size: 1.8rem;
+      font-weight: bold;
+      letter-spacing: 1px;
     }
-    h1 {
-      color: #4CAF50;
-      animation: fadeIn 2s ease-in-out;
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      padding: 1rem;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .filters button {
+      background: #222;
+      color: #fff;
+      border: 1px solid #444;
+      border-radius: 20px;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
     }
+    .filters button:hover {
+      background: #444;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      padding: 1rem;
+    }
+    .card {
+      background: #1a1a1a;
+      border-radius: 10px;
+      padding: 1rem;
+      border: 1px solid #333;
+      position: relative;
+      overflow: hidden;
+      animation: fadeIn 0.5s ease-in;
+    }
+    .card h3 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1.2rem;
+    }
+    .card p {
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+    .status {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 0.75rem;
+      background: #333;
+      padding: 3px 8px;
+      border-radius: 12px;
+      color: #fff;
+    }
+    .status.New { background: #1abc9c; }
+    .status.Featured { background: #f39c12; }
+    .status.Ongoing { background: #3498db; }
+    .status.Done { background: #7f8c8d; }@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
   </style>
 </head>
 <body>
-  <h1>Welcome, Master!</h1>
-  <p>This is your first website on mobile.</p>
-</body>
+  <header>Crypto Airdrops Hub</header>
+  <div class="filters">
+    <button onclick="filterCards('All')">All</button>
+    <button onclick="filterCards('New')">New</button>
+    <button onclick="filterCards('Featured')">Featured</button>
+    <button onclick="filterCards('Ongoing')">Ongoing</button>
+    <button onclick="filterCards('Done')">Done</button>
+  </div>
+  <div class="container" id="cardContainer">
+    <div class="card" data-status="New">
+      <span class="status New">New</span>
+      <h3>Kondog Token Airdrop</h3>
+      <p>Get your free $KONDOG tokens. Meme meets moon.</p>
+    </div>
+    <div class="card" data-status="Featured">
+      <span class="status Featured">Featured</span>
+      <h3>AstroDoge Launch</h3>
+      <p>Claim your $ASTRODOGE as we launch to the stars!</p>
+    </div>
+    <div class="card" data-status="Ongoing">
+      <span class="status Ongoing">Ongoing</span>
+      <h3>MetaPepe Fiesta</h3>
+      <p>Join our fiesta and earn NFTs + $MPEPE drops.</p>
+    </div>
+    <div class="card" data-status="Done">
+      <span class="status Done">Done</span>
+      <h3>CatCoin Retrodrop</h3>
+      <p>Snapshot already taken. Claiming now closed.</p>
+    </div>
+    <div class="card" data-status="New">
+      <span class="status New">New</span>
+      <h3>PenguBlast</h3>
+      <p>Slide into Web3 with this icy $PENGU token drop.</p>
+    </div>
+    <div class="card" data-status="Featured">
+      <span class="status Featured">Featured</span>
+      <h3>FairyToken Airdrop</h3>
+      <p>Magic sparkles are real! Claim your $FAIRY now.</p>
+    </div>
+    <div class="card" data-status="Ongoing">
+      <span class="status Ongoing">Ongoing</span>
+      <h3>CornCoin Season</h3>
+      <p>Harvest the rewards of $CORN from DeFi farming.</p>
+    </div>
+    <div class="card" data-status="Done">
+      <span class="status Done">Done</span>
+      <h3>ShibDino Drop</h3>
+      <p>The dino roared and it's gone. $SDINO over.</p>
+    </div>
+    <div class="card" data-status="New">
+      <span class="status New">New</span>
+      <h3>PixelMew Loot</h3>
+      <p>Claim your retro-pixel $MEW character NFTs today.</p>
+    </div>
+  </div>  <script>
+    function filterCards(status) {
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => {
+        if (status === 'All' || card.dataset.status === status) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script></body>
 </html>
